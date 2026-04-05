@@ -12,13 +12,19 @@
   <header>
     <h1>NPTEL Courses Portal</h1>
     <p>Select your course and week to access content</p>
+    <div class="exam-timer">
+  <h3>⏰ Upcoming Exam Reminder</h3>
+  <p>ACA NPTEL Exam Date: <strong>April 18, 2026</strong></p>
+  <p><strong>Prepare well! Don't take it as easy.</strong></p>
+  <h3 id="countdown"></h3>
+</div>
   </header>
 
   <main class="container">
 
     <!-- Left Side (IOT) -->
     <section class="course">
-      <h2>PREVIOUS ACA NPTEL</h2>
+      <h2> NPTEL</h2>
       <div class="weeks">
         <div class="week-box">
           <h3>Week 1</h3>
@@ -69,8 +75,7 @@
           <a href="week12.html">Click Here</a>
         </div>
          <div class="week-box">
-            <h3>ACA 1-12 weeks</h3>
-             <h3>PREVIOUS</h3>
+            <h3>1-12 weeks</h3>
             <a href="alldip.html">Click Here</a>
         </div>
        
@@ -80,7 +85,7 @@
 
     <!-- Right Side (DIP) -->
     <section class="course">
-      <h2> ACA NPTEL</h2>
+      <h2>PREVIOUS DIP NPTEL</h2>
       <div class="weeks">
         <div class="week-box">
           <h3>Week 1</h3>
@@ -132,8 +137,8 @@
         </div>
         
          <div class="week-box">
-            <h3>ACA 1-12 weeks</h3>
-          
+            <h3>1-12 weeks</h3>
+            <h3>PREVIOUS</h3>
             <a href="prevdip.html">Click Here</a>
         </div>
        
@@ -149,8 +154,26 @@
   </p>
 </footer>
 
+<script>
+  const examDate = new Date("April 18, 2026 09:00:00").getTime();
 
+  const timer = setInterval(function () {
+    const now = new Date().getTime();
+    const distance = examDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("countdown").innerHTML =
+      days + " Days " + hours + " Hours " + minutes + " Minutes " + seconds + " Seconds left";
+
+    if (distance < 0) {
+      clearInterval(timer);
+      document.getElementById("countdown").innerHTML = "Exam Started!";
+    }
+  }, 1000);
+</script>
 </body>
 </html>
-
-
